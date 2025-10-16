@@ -20,7 +20,7 @@ h1 {
     background-color: rgb(171, 245, 220);
 }
 
-#start-game, #play-again {
+#start-game {
     background-color: rgba(213, 255, 244, 0.636);
     color: black;
     border: 3px dotted rgb(54, 124, 4);

@@ -24,3 +24,18 @@ The snake should be able to eat food to grow bigger
 The game should end when the snake hits the wall or itself
 
 Snake speeds up as it eats more
+
+## Play my Game
+
+(Link Here)
+
+## Technologies User
+
+JavaScript, HTML, CSS
+
+## Next Steps
+
+1 Advanced Styling
+2 Responsive Design
+3 Multiplayer Mode
+4 High Score Table
