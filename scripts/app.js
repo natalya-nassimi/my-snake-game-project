@@ -1,93 +1,8 @@
-// Submit an initial data structure of your game state along with your pseudocode.
-
-// Pseudocode
-
-/*-------------------------------- HTML --------------------------------*/
-
-// Title
-// Grid for the section in which the game is played
-// Start button
-// Restart button
-// Score display
-// Score / Lose statment display
-// Highscore board?
-
-/*-------------------------------- Variables --------------------------------*/
-
-// Snake Position - will be represented by an array of coordinates to determine where it shows on the screen - index for each cell
-// Snake length - number of parts of the segments currently
-// The Food - coordinate of where the next piece of food shows up
-// Players Score - will carry the number of food items eaten
-// Speed - will determine how fast the snake moves (set using an interval time)
-// Play state - boolean to determine win \ lose (whether the game is still going)
-// Direction - will carry upwards, downwards, left or right, controlled by the keyboard arrows
-
-/*------------------------ Cached Element References ------------------------*/
-
-// Start button
-// Restart button
-// Score Display
-// Grid section of the game
-// Display section for You Scored: or You Lose!
-
-/*-------------------------------- Functions --------------------------------*/
-
-// Initialise game
-//  1 Score at 0
-//  2 Snake position on left of the screen
-//  3 Snake direction moving towards the right of the screen
-//  4 Random placement of the first piece of food
-//  5 Game play state = true
-//  6 Snake length starts at three segments
-//  7 Initial speed of the snake measured by time interval of the loop
-
-// Moving the snake
-//  1 Move the first segment of the snake according to the direction pressed on the keyboard
-//  2 Use event listeners from keyboard presses
-//  3 Snake head repositions and the tail is removed
-//  4 Check if food has been eaten
-
-// Check collisions
-//  1 Check for a collision with itself
-//  2 Check for a collision with the walls
-//  3 If collision end the game
-
-// Placing the food
-//  1 Random select of a position for the next piece of food
-
-// Eat food
-//  1 Food disappears
-//  2 Snake length increases by 1 segments
-//  3 Snake speed increases (reduce interval)
-//  4 Score increases by 1
-
-// Main game loop
-//  1 Call Move snake
-//  2 Call Place food
-
-// Game over
-//  1 Game play state = false
-//  2 Clear grid
-//  3 Display You lose! and Score
-
-// Replay
-//  1 When the restart button is clicked clear the grid
-//  2 Call Initialise game function to start again
-
-/*----------------------------- Event Listeners -----------------------------*/
-
-// 4 Listeners 1 for each key: Up Down Left Right
-// Start button click
-// Restart button click
-
-
-// Start Code Here
-
-// Create Grid
-
-const startGame = document.querySelector('#start-game')
+const startGame = document.querySelector('#start-game');
 const gameGrid = document.querySelector('.grid');
-const scoreDisplay = document.querySelector('.display-score')
+const scoreDisplay = document.querySelector('.display-score');
+const loseMessage = document.querySelector('.message');
+
 const gridSize = 20;
 let segments = [];
 let mySnake = [];
@@ -95,7 +10,7 @@ let direction = null;
 let foodPosition = null;
 let interval = null;
 let currentSpeed = 500;
-let speedIncrease = 0.95;
+let speedIncrease = 0.9;
 let score = 0;
 
 const drawGrid = (size) => {
@@ -116,7 +31,7 @@ const showSnake = () => {
 }
 
 const placeFood = () => {
-    const emptySquares = segments.map((unused, index) => index).filter(index => !mySnake.includes(index));
+    const emptySquares = segments.map((element, index) => index).filter(index => !mySnake.includes(index));
     const randomIndex = Math.floor(Math.random() * emptySquares.length);
     foodPosition = emptySquares[randomIndex];
     segments[foodPosition].classList.add('food');
@@ -155,8 +70,8 @@ function moveSnake() {
 
     if (collisionCheck(head)) {
         clearInterval(interval);
-        alert (`You Lose 🫤 Game Over! Final Score: ${score}`) // change to HTML
-        startGame.textContent = 'Play Again !'
+        loseMessage.textContent = `You Lose 🫤 Game Over! Final Score: ${score}`;
+        startGame.textContent = 'Play Again'
         return;
     }
 
@@ -169,15 +84,15 @@ function moveSnake() {
     showSnake();
 }
 
-// event listener for keyboard
-
 const initGame = () => {
     clearInterval(interval);
     mySnake = [26, 25, 24];
     direction = 1;
+    currentSpeed = 500;
     score = 0;
     scoreDisplay.textContent = `Your Score: ${score}`;
     startGame.textContent = 'Start Game';
+    loseMessage.textContent = '';
     drawGrid(gridSize);
     showSnake();
     placeFood();
@@ -185,3 +100,20 @@ const initGame = () => {
 }
 
 startGame.addEventListener('click', initGame);
+
+const controlDirection = (press) => {
+    if (press.key === 'ArrowLeft' && direction !== 1) {
+        direction = -1;
+    }
+    else if (press.key === 'ArrowRight' && direction !== -1) {
+        direction = 1;
+    }
+    else if (press.key === 'ArrowUp' && direction !== gridSize) {
+        direction = -gridSize;
+    }
+    else if (press.key === 'ArrowDown' && direction !== -gridSize) {
+        direction = gridSize;
+    }
+}
+
+document.addEventListener('keydown', controlDirection);
