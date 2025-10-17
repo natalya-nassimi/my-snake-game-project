@@ -2,12 +2,13 @@
 <p align='center'>A basic game of the classic Snake, written in HTML, CSS and JavaScript.</p>
 
 ## How it Looks
-(Insert screenshot of game)
+![Game Screenshot](./images/screenshot.png)
 
-## How to Play
+## Description
 This is a single-player game where you control the snake to eat food that will be randomly placed on the screen. Your snake will keep growing longer with each piece of food it eats and will also get faster to make the game increasingly challenging.
 The game ends if the snake collides either with the walls or with itself - the aim is to survive for as long as possible.
 
+### How to Play
 Press the ⬆️ key to change the direction to upwards.
 
 Press the ⬇️ key to change the direction to downwards.
@@ -18,30 +19,34 @@ Press the ➡️ key to change the direction to right.
 
 A fun game to play and a good example for a first time build with JavaScript!
 
-## Requirements
-The snake should be able to eat food to grow bigger
+## Requirements / Brief
+The snake should be able to eat food to grow bigger.
 
-The game should end when the snake hits the wall or itself
+The game should end when the snake hits the wall or itself.
 
-Snake speeds up as it eats more
+Snake speeds up as it eats more.
 
-## Play my Game
+## Deployment link to play my game
 
 (Link Here)
 
+## Getting Started / Code Installation
+
+Fill
+
+## Time Frame and Team
+
+Fill
+
 ## Technologies Used
 
-JavaScript, HTML, CSS
+JavaScript, HTML, CSS.
 
-## Next Steps
+## Planning
 
-1 Responsive Design
+Fill
 
-2 Multiplayer Mode
-
-3 High Score Table
-
-## Pseudocode
+### Pseudocode
 
 /*-------------------------------- HTML --------------------------------*/
 
@@ -114,3 +119,31 @@ JavaScript, HTML, CSS
 // Detect key presses on arrows to change direction <br>
 // Player cannot immediately move from up to down or left to right or vice versa <br>
 // Start button click to initialise game <br>
+
+## Build Process
+
+Fill
+
+## Challenges
+
+Fill
+
+## Wins
+
+Fill
+
+## Key Takeaways
+
+Fill
+
+## Bugs
+
+Fill
+
+## Next Steps
+
+1 Responsive Design
+
+2 Multiplayer Mode
+
+3 High Score Table

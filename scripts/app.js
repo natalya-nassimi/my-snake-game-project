@@ -45,7 +45,7 @@ const eatFood = (head) => {
         placeFood();
 
         clearInterval(interval);
-        currentSpeed = Math.max(100, currentSpeed*speedIncrease);
+        currentSpeed = Math.max(100, currentSpeed * speedIncrease);
         interval = setInterval(moveSnake, currentSpeed);
         return true;
     }
@@ -56,9 +56,9 @@ const eatFood = (head) => {
 
 const collisionCheck = (head) => {
     const leftHit = (mySnake[0] % gridSize === 0 && direction === -1);
-    const rightHit = (mySnake[0] % gridSize === gridSize -1 && direction === 1);
+    const rightHit = (mySnake[0] % gridSize === gridSize - 1 && direction === 1);
     const topHit = (mySnake[0] < gridSize && direction === -gridSize);
-    const bottomHit = (mySnake[0] >= (gridSize*(gridSize-1)) && direction === gridSize);
+    const bottomHit = (mySnake[0] >= (gridSize * (gridSize - 1)) && direction === gridSize);
     const snakeHit = mySnake.includes(head);
 
     return leftHit || rightHit || topHit || bottomHit || snakeHit;
